@@ -5,19 +5,19 @@
   },
   "Auth-Server": {
     "client_id":"bluecomputeweb",
-    "client_secret":"replace_me_with_client_secret"
+    "client_secret":"b7f4d532-cd1d-4a13-a46b-b035bc19fa46"
   },
   "APIs": {
     "catalog": {
       "protocol": "http",
-      "service_name": "host.docker.internal:8083",
+      "service_name": "catalog-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
       ]
     },
     "orders": {
       "protocol": "http",
-      "service_name": "host.docker.internal:8086",
+      "service_name": "orders-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
         "oauth"
@@ -32,7 +32,7 @@
     },
     "customerService": {
       "protocol": "http",
-      "service_name": "host.docker.internal:8087",
+      "service_name": "customer-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "paths": {
         "customer": "/customer"
@@ -43,8 +43,8 @@
       "redirect_url": "http://localhost"
     },
     "customer": {
-      "protocol": "http",
-      "service_name": "host.docker.internal:8085",
+      "protocol": "https",
+      "service_name": "keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/auth/realms/sfrealm/protocol/openid-connect",
       "paths": {
         "userinfo": "/userinfo"
@@ -55,8 +55,8 @@
       "redirect_url": "http://localhost"
     },
     "oauth20": {
-      "protocol": "http",
-      "service_name": "host.docker.internal:8085",
+      "protocol": "https",
+      "service_name": "keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/auth/realms/sfrealm/protocol/openid-connect",
       "paths": {
         "authz": "/auth",
