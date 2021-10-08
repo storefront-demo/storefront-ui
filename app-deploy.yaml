@@ -5,8 +5,9 @@ metadata:
     architecture: x86_64
     authoritative-source-url: registry.access.redhat.com
     build-date: 2020-04-09T10:02:05.547594
-    commit.image.appsody.dev/date: Thu May 20 15:18:30 2021 +0530
-    commit.image.appsody.dev/message: 'Merge pull request #29 from ibm-garage-ref-storefront/hp-quarkus-version-cntk'
+    commit.image.appsody.dev/date: Wed Oct 6 12:51:04 2021 -0400
+    commit.image.appsody.dev/message: update the config production.json file so that
+      the app works on openshift
     commit.stack.appsody.dev/contextDir: /incubator/nodejs
     commit.stack.appsody.dev/date: Thu May 14 09:37:35 2020 +0100
     commit.stack.appsody.dev/message: 'Merge pull request #340 from groeges/release-0.9-codewind'
@@ -14,11 +15,11 @@ metadata:
       collection
     distribution-scope: public
     help: For more information visit https://github.com/sclorg/s2i-nodejs-container
-    image.opencontainers.org/created: "2021-10-06T11:06:56-04:00"
-    image.opencontainers.org/documentation: https://github.com/ibm-garage-ref-storefront/storefront-ui
-    image.opencontainers.org/revision: 95b08272e20dceba21f4fae9b94a05266d81d996-modified
-    image.opencontainers.org/source: https://github.com/ibm-garage-ref-storefront/storefront-ui/tree/hp-quarkus-version
-    image.opencontainers.org/url: https://github.com/ibm-garage-ref-storefront/storefront-ui
+    image.opencontainers.org/created: "2021-10-07T14:29:57-04:00"
+    image.opencontainers.org/documentation: https://github.com/storefront-demo/storefront-ui
+    image.opencontainers.org/revision: 45bbc6db6d8e035d03dcbfa767a766f97eda1681-modified
+    image.opencontainers.org/source: https://github.com/storefront-demo/storefront-ui/tree/hp-quarkus-version
+    image.opencontainers.org/url: https://github.com/storefront-demo/storefront-ui
     k8s.io/description: Node.js 12 available as container is a base platform for building
       and running various Node.js 12 applications and frameworks. Node.js is a platform
       built on Chrome's JavaScript runtime for easily building fast, scalable network
