@@ -4,20 +4,20 @@
     "region": ""
   },
   "Auth-Server": {
-    "client_id":"bluecomputeweb",
-    "client_secret":"b7f4d532-cd1d-4a13-a46b-b035bc19fa46"
+    "client_id":"7fe33d64-f3ee-47ce-b935-602aae038caa",
+    "client_secret":"RKm07apXZS"
   },
   "APIs": {
     "catalog": {
       "protocol": "http",
-      "service_name": "catalog-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
+      "service_name": "catalog-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
       ]
     },
     "orders": {
       "protocol": "http",
-      "service_name": "orders-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
+      "service_name": "orders-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
         "oauth"
@@ -32,7 +32,7 @@
     },
     "customerService": {
       "protocol": "http",
-      "service_name": "customer-ms-quarkus-storefront-dev.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
+      "service_name": "customer-ms-quarkus-storefront-isv.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "paths": {
         "customer": "/customer"
@@ -44,8 +44,8 @@
     },
     "customer": {
       "protocol": "https",
-      "service_name": "keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
-      "base_path": "/auth/realms/sfrealm/protocol/openid-connect",
+      "service_name": "gymathlete.verify.ibm.com",
+      "base_path": "/v1.0/endpoint/default",
       "paths": {
         "userinfo": "/userinfo"
       },
@@ -56,8 +56,8 @@
     },
     "oauth20": {
       "protocol": "https",
-      "service_name": "keycloak-keycloak.itzroks-120000f0e7-nh1j2i-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud",
-      "base_path": "/auth/realms/sfrealm/protocol/openid-connect",
+      "service_name": "gymathlete.verify.ibm.com",
+      "base_path": "/v1.0/endpoint/default",
       "paths": {
         "authz": "/auth",
         "token": "/token"
