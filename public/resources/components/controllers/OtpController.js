@@ -1,4 +1,4 @@
-app.controller('OtpController', ['$scope', '$window', '$location', 'UserInfoService', 'CONFIG', function($scope, $window, $location, UserInfoService, CONFIG) {
+app.controller('OtpController', ['$scope', '$window', '$location', 'UserInfoService', 'CONFIG', 'BlueAPIService', function($scope, $window, $location, UserInfoService, CONFIG, BlueAPIService) {
 
 	console.log("Entering Otp Controller")
 
@@ -14,5 +14,20 @@ app.controller('OtpController', ['$scope', '$window', '$location', 'UserInfoServ
 				$location.path("/customer");
 			}
 		}
+
+	$scope.getotp = function () {
+			BlueAPIService.getOtp(UserInfoService.state.otpToken, function (response) {
+					console.log("Send request for OTP" + response)
+					$scope.result = response.data
+					$scope.success = true;
+					$scope.fail = false;
+			}, function (error){
+					console.log("Request failed: " + error);
+					$scope.success = false;
+					$scope.fail = true;
+			});
+			$window.alert("Please check your registered email or mobile number for the one password");
+			$location.path("/otp");
+	}
 
 }]);

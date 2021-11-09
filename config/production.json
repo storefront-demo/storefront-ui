@@ -54,6 +54,19 @@
       ],
       "redirect_url": "http://localhost"
     },
+    "otp": {
+      "protocol": "https",
+      "service_name": "hpstorefront.verify.ibm.com",
+      "base_path": "/v2.0/factors/emailotp",
+      "paths": {
+        "generation": "/transient/verifications",
+        "verify": ""
+      },
+      "require": [
+        "oauth"
+      ],
+      "redirect_url": "http://localhost"
+    },
     "oauth20": {
       "protocol": "https",
       "service_name": "hpstorefront.verify.ibm.com",

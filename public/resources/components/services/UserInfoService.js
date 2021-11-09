@@ -8,6 +8,7 @@ app.factory('UserInfoService', ['$rootScope',function($rootScope) {
     var service = {
         state: {
           accessToken: '',
+          otpToken: '',
           authenticated: false
         },
       };

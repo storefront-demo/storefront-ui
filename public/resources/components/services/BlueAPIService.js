@@ -106,6 +106,11 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				var restUrl = 'order/cartprice';
 				var requestType = 'GET_AUTH';
 				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
+			},
+			getOtp: function(access_token, successCallback, errorCallback) {
+				var restUrl = 'otp/generation';
+				var requestType = 'POST_AUTH';
+				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
 			}
 		}
 }]);

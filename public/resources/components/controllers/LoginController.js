@@ -14,6 +14,7 @@ app.controller('LoginController', ['$scope','$location','BlueAPIService','UserIn
 				//GK UserInfoService.state.accessToken = response.data.access_token
 				//GK instead we want to propogate the id token which contains more claims info in it such as email and other stuff
 				UserInfoService.state.accessToken = response.data.id_token
+				UserInfoService.state.otpToken = response.data.access_token
 				UserInfoService.state.authenticated = true;
 				$location.path('/catalog');
 
