@@ -60,7 +60,7 @@
       "base_path": "/v2.0/factors/emailotp",
       "paths": {
         "generation": "/transient/verifications",
-        "verify": ""
+        "verify": "transient/verifications"
       },
       "require": [
         "oauth"

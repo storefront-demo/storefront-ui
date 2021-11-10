@@ -111,6 +111,11 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				var restUrl = 'otp/generation';
 				var requestType = 'POST_AUTH';
 				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
+			},
+			validateOtp: function(access_token, parameters, successCallback, errorCallback) {
+				var restUrl = 'otp/verify';
+				var requestType = 'POST_AUTH';
+				invokeService(restUrl, requestType, parameters, successCallback, errorCallback, access_token);
 			}
 		}
 }]);

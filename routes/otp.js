@@ -13,16 +13,27 @@ var api_url = new UrlPattern('(:protocol)\\://(:host)(:api)/(:operation)');
 var _apis = config.get('APIs');
 var _authServer = config.get('Auth-Server');
 
+var txnid;
+
 // router.get('/otp', function(req, res) {
 //     session = req.session;
 //     res.sendFile(path.join(__dirname, '../', 'public/resources/components/views/otp.html'));
 // });
 
-/* Handle the POST request for creating a new item review */
+/* Handle the POST request for creating a new otp */
 router.post('/generation', function(req, res) {
     session = req.session;
     setOtpOptions(req, res)
         .then(submitOtpRequest)
+        .catch(renderErrorPage)
+        .done();
+});
+
+/* Handle the POST request for validating the otp */
+router.post('/verify', function(req, res) {
+    session = req.session;
+    setOtpValidateOptions(req, res)
+        .then(verifyOtp)
         .catch(renderErrorPage)
         .done();
 });
@@ -80,6 +91,75 @@ function submitOtpRequest(function_input) {
         .then(function(data) {
             console.log("DATA: " + JSON.stringify(data));
             // Render the page with the results of the API call
+            txnid = data.id;
+            res.setHeader('Content-Type', 'application/json');
+            res.send(data);
+        })
+        .fail(function(err) {
+            console.log("ERR: " + JSON.stringify(err));
+            // Render the error message in JSON
+            res.setHeader('Content-Type', 'application/json');
+            res.send(err);
+        });
+}
+
+function setOtpValidateOptions(req, res) {
+
+    var form_body = req.body;
+
+    var reqBody = {
+        otp: form_body.otp
+    };
+
+    var otp_validate_url = api_url.stringify({
+        protocol: utils.getProtocol(_apis.otp.protocol),
+        host: _apis.otp.service_name,
+        api: _apis.otp.base_path,
+        operation: "transient/verifications/"+txnid+"?returnJwt=true"
+    });
+
+    var options = {
+        method: 'POST',
+        url: otp_validate_url,
+        strictSSL: false,
+        headers: {},
+        body: reqBody,
+        JSON: true
+    };
+
+    // Add Headers like Host
+    if (_apis.otp.headers) {
+        options.headers = _apis.otp.headers;
+    }
+
+    return new Promise(function(fulfill) {
+        // Get OAuth Access Token, if needed
+        if (_apis.otp.require.indexOf("oauth") != -1) {
+            // Add OAuth access token to the header
+            options.headers.Authorization = req.headers.authorization;
+            fulfill({
+                options: options,
+                res: res
+            });
+        } else fulfill({
+            options: options,
+            res: res
+        });
+    });
+
+}
+
+function verifyOtp(function_input) {
+
+    var options = function_input.options;
+    var otp = function_input.otp;
+    var res = function_input.res;
+    console.log("OTP OPTIONS:\n" + JSON.stringify(options));
+    http.request(options)
+        .then(function(data) {
+            console.log("DATA: " + JSON.stringify(data));
+            // Render the page with the results of the API call
+            txnid = data.id;
             res.setHeader('Content-Type', 'application/json');
             res.send(data);
         })
