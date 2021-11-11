@@ -2,6 +2,36 @@
 <head>
 <meta charset="UTF-8">
 <style>
+
+.mydiv {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+}
+
+.container {
+  height: 50px;
+  position: relative;
+}
+
+.cont {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
 </style>
 </head>
 <body>
@@ -18,23 +48,35 @@
     </ul>
   </div>
 </div>
-<div style="width:800px; margin:0 auto;">
-<h2>To access the profile and order information, please enter your One-Time-Password</h2>
-</div>
-<div style="width:800px; margin:0 auto;">
-  <button type="submit"  ng-click="getotp()" class="pure-button pure-button-primary">Get OTP</button>
-</div>
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form>
-        <label for="OTP">OTP</label>
-        <input type="text" id="OTP" name="OTP" ng-model="otp">
-        <button type="submit"  ng-click="submit()" class="pure-button pure-button-primary">Submit</button>
-      </form>
-    </div>
+<div class="cont">
+  <div class="center">
+    <h3>To access your profile and order information</h3>
   </div>
 </div>
-<p>To access the profile and order information, please enter your One-Time-Password</p>
+<div class="container">
+  <div class="center">
+    <p>Click on Get OTP to generate One-Time-Password</p>
+  </div>
+</div>
+<div class="container">
+  <div class="center">
+    <button type="submit"  ng-click="getotp()" class="pure-button pure-button-primary">Get OTP</button>
+  </div>
+</div>
+<div class="container">
+  <div class="center">
+    <h4>Check your email and please enter your One-Time-Password below</h4>
+  </div>
+</div>
+<div class="container">
+  <div class="center">
+    <input type="text" id="OTP" name="OTP" ng-model="otp">
+  </div>
+</div>
+<div class="container">
+  <div class="center">
+    <button type="submit"  ng-click="submit()" class="pure-button pure-button-primary">Submit</button>
+  </div>
+</div>
 </body>
 </html>
