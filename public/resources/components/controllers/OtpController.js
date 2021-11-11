@@ -2,14 +2,13 @@ app.controller('OtpController', ['$scope', '$window', '$location', 'UserInfoServ
 
 	console.log("Entering Otp Controller")
 
-	var status;
-
 	$scope.loggedIn = UserInfoService.state.authenticated
 
+	var token = UserInfoService.state.accessToken
+
 	$scope.submit = function () {
-		  console.log($scope.otp)
 			$scope.payload = {
-												'otp':$scope.otp
+												'otp':$scope.otp,
 											 }
 
 			var validateotp = BlueAPIService.validateOtp(UserInfoService.state.otpToken, $scope.payload, function (response) {
@@ -27,7 +26,10 @@ app.controller('OtpController', ['$scope', '$window', '$location', 'UserInfoServ
 	}
 
 	$scope.getotp = function () {
-			BlueAPIService.getOtp(UserInfoService.state.otpToken, function (response) {
+			$scope.payload = {
+												'token':token,
+											 }
+			BlueAPIService.getOtp(UserInfoService.state.otpToken, $scope.payload, function (response) {
 					console.log("Send request for OTP" + response)
 					$scope.result = response.data
 					$scope.success = true;

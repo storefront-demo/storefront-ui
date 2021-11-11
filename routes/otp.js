@@ -40,8 +40,23 @@ router.post('/verify', function(req, res) {
 
 function setOtpOptions(req, res) {
 
+    var form_body = req.body;
+
     var reqBody = {
-        emailAddress: "phemankita@gmail.com"
+        token: form_body.token
+    };
+
+    var token = reqBody.token;
+
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+
+    var decode = Buffer.from(base64, 'base64').toString();
+
+    var jsonPaylod = JSON.parse(decode);
+
+    var email = {
+        emailAddress: jsonPaylod.email
     };
 
     var otp_url = api_url.stringify({
@@ -56,7 +71,7 @@ function setOtpOptions(req, res) {
         url: otp_url,
         strictSSL: false,
         headers: {},
-        body: reqBody,
+        body: email,
         JSON: true
     };
 
@@ -84,7 +99,7 @@ function setOtpOptions(req, res) {
 
 function submitOtpRequest(function_input) {
     var options = function_input.options;
-    var email = "phemankita@gmail.com";
+    var email = function_input.email;
     var res = function_input.res;
     console.log("OTP OPTIONS:\n" + JSON.stringify(options));
     http.request(options)

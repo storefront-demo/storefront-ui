@@ -31,7 +31,7 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 			$http({
 				headers: {
 				//	"Content-Type": 'application/x-www-form-urlencoded'
-					"Authorization": 'Bearer '+ access_token
+					"Authorization": 'Bearer '+ access_token,
 				},
 				method: 'POST',
 				url: restUrl,
@@ -107,10 +107,10 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				var requestType = 'GET_AUTH';
 				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
 			},
-			getOtp: function(access_token, successCallback, errorCallback) {
+			getOtp: function(access_token, parameters, successCallback, errorCallback) {
 				var restUrl = 'otp/generation';
 				var requestType = 'POST_AUTH';
-				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
+				invokeService(restUrl, requestType, parameters, successCallback, errorCallback, access_token);
 			},
 			validateOtp: function(access_token, parameters, successCallback, errorCallback) {
 				var restUrl = 'otp/verify';
