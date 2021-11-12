@@ -67,6 +67,18 @@
       ],
       "redirect_url": "http://localhost"
     },
+    "user": {
+      "protocol": "https",
+      "service_name": "hpstorefront.verify.ibm.com",
+      "base_path": "/v2.0",
+      "paths": {
+        "info": "/Me"
+      },
+      "require": [
+        "oauth"
+      ],
+      "redirect_url": "http://localhost"
+    },
     "oauth20": {
       "protocol": "https",
       "service_name": "hpstorefront.verify.ibm.com",

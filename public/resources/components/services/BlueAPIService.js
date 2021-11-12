@@ -116,6 +116,11 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				var restUrl = 'otp/verify';
 				var requestType = 'POST_AUTH';
 				invokeService(restUrl, requestType, parameters, successCallback, errorCallback, access_token);
-			}
+			},
+			getBillingInfo : function(access_token, successCallback, errorCallback) {
+				var restUrl = 'payments/Me';
+				var requestType = 'GET_AUTH';
+				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
+			},
 		}
 }]);
