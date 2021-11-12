@@ -55,6 +55,8 @@ function setOtpOptions(req, res) {
 
     var jsonPaylod = JSON.parse(decode);
 
+    console.log('json payload'+JSON.stringify(jsonPaylod));
+
     var email = {
         emailAddress: jsonPaylod.email
     };

@@ -16,7 +16,7 @@ var customer = require('./routes/customer');
 var orders = require('./routes/orders');
 var auth = require('./routes/auth');
 var payments = require('./routes/payments');
-var otp = require('./routes/otp')
+var otp = require('./routes/otp');
 
 var app = express();
 
