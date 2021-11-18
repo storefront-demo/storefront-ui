@@ -1,8 +1,25 @@
 app.controller('LoginController', ['$scope','$location','BlueAPIService','UserInfoService', 'CONFIG', function($scope, $location, BlueAPIService, UserInfoService, CONFIG) {
 
-	console.log("Entering Login Controller")
-	$scope.loggedIn = UserInfoService.state.authenticated
-	$scope.loginError = false;
+	 // var UrlPattern = require('url-pattern');
+	 // var config = require('config');
+	 //
+	 // var session;
+	 // var api_url = new UrlPattern('(:protocols)\\://(:host)(:api)/(:operation)');
+	 // var _apis = config.get('APIs');
+	 // var _authServer = config.get('Auth-Server');
+	 //
+	 // var acct_create_url = api_url.stringify({
+   //   protocols: _apis.otp.protocol,
+   //   host: _apis.otp.service_name,
+   //   api: "register",
+   //   operation: _apis.otp.paths.instance
+   // });
+	 //
+	 // console.log("Entering Login Controller")
+	 // $scope.loggedIn = UserInfoService.state.authenticated
+	 // $scope.loginError = false;
+	 //
+	 // $scope.accountCreation = acct_create_url;
 
 	 $scope.save = function (loginForm) {
 
