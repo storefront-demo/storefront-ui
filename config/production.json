@@ -10,14 +10,14 @@
   "APIs": {
     "catalog": {
       "protocol": "http",
-      "service_name": "catalog-ms-quarkus-storefront-isv.itzroks-5500068atp-ottbmf-4b4a324f027aea19c5cbc0c3275c4656-0000.hkg02.containers.appdomain.cloud",
+      "service_name": "catalog-ms-quarkus-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
       ]
     },
     "orders": {
       "protocol": "http",
-      "service_name": "orders-ms-quarkus-storefront-isv.itzroks-5500068atp-ottbmf-4b4a324f027aea19c5cbc0c3275c4656-0000.hkg02.containers.appdomain.cloud",
+      "service_name": "orders-ms-quarkus-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud/micro/items",
       "base_path": "/micro",
       "require": [
         "oauth"
@@ -32,7 +32,7 @@
     },
     "customerService": {
       "protocol": "http",
-      "service_name": "customer-ms-quarkus-storefront-isv.itzroks-5500068atp-ottbmf-4b4a324f027aea19c5cbc0c3275c4656-0000.hkg02.containers.appdomain.cloud",
+      "service_name": "customer-ms-quarkus-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "paths": {
         "customer": "/customer"
