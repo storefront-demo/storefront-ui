@@ -4,8 +4,8 @@
     "region": ""
   },
   "Auth-Server": {
-    "client_id":"ea74e4f7-4042-4f5f-be8e-a8ccb31a11f6",
-    "client_secret":"88CXlO74KW"
+    "client_id":"7fe33d64-f3ee-47ce-b935-602aae038caa",
+    "client_secret":"RKm07apXZS"
   },
   "APIs": {
     "catalog": {
@@ -44,7 +44,7 @@
     },
     "customer": {
       "protocol": "https",
-      "service_name": "hpstorefront.verify.ibm.com",
+      "service_name": "gymathlete.verify.ibm.com",
       "base_path": "/v1.0/endpoint/default",
       "paths": {
         "userinfo": "/userinfo"
@@ -56,11 +56,12 @@
     },
     "otp": {
       "protocol": "https",
-      "service_name": "hpstorefront.verify.ibm.com",
+      "service_name": "gymathlete.verify.ibm.com",
       "base_path": "/v2.0/factors/emailotp",
       "paths": {
         "generation": "/transient/verifications",
-        "verify": "transient/verifications/"
+        "verify": "transient/verifications/",
+        "instance": "gymathlete"
       },
       "require": [
         "oauth"
@@ -69,7 +70,7 @@
     },
     "user": {
       "protocol": "https",
-      "service_name": "hpstorefront.verify.ibm.com",
+      "service_name": "gymathlete.verify.ibm.com",
       "base_path": "/v2.0",
       "paths": {
         "Me": "/Me"
@@ -81,7 +82,7 @@
     },
     "oauth20": {
       "protocol": "https",
-      "service_name": "hpstorefront.verify.ibm.com",
+      "service_name": "gymathlete.verify.ibm.com",
       "base_path": "/v1.0/endpoint/default",
       "paths": {
         "authz": "/auth",
