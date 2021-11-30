@@ -17,7 +17,7 @@
     },
     "orders": {
       "protocol": "http",
-      "service_name": "orders-ms-quarkus-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud/micro/items",
+      "service_name": "orders-ms-quarkus-storefront-isv.mycluster-dal10-b3-395793-21fccf5f2d8b0395ffcdb911140639db-0000.us-south.containers.appdomain.cloud",
       "base_path": "/micro",
       "require": [
         "oauth"
