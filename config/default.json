@@ -4,8 +4,8 @@
     "region": ""
   },
   "Auth-Server": {
-    "client_id":"7fe33d64-f3ee-47ce-b935-602aae038caa",
-    "client_secret":"RKm07apXZS"
+    "client_id":"replace_me_with_client_id",
+    "client_secret":"replace_me_with_client_secret"
   },
   "APIs": {
     "catalog": {
