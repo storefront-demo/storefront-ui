@@ -7,16 +7,14 @@ var Promise = require('promise');
 var UrlPattern = require('url-pattern');
 var config = require('config');
 var utils = require('./utils');
+var bodyParser = require('body-parser');
 
 var session;
 var api_url = new UrlPattern('(:protocol)\\://(:host)(:api)/(:operation)');
 var _apis = config.get('APIs');
 var _authServer = config.get('Auth-Server');
 
-// router.get('/payment', function(req, res) {
-//     session = req.session;
-//     res.sendFile(path.join(__dirname, '../', 'public/resources/components/views/payment.html'));
-// });
+var jsonParser = bodyParser.json({ type: 'application/*+json' } );
 
 /* Handle the Get request*/
 router.get('/Me', function (req, res) {
@@ -27,6 +25,15 @@ router.get('/Me', function (req, res) {
     .catch(renderErrorPage)
     .done();
 
+});
+
+/* Handle the PUT request*/
+router.put('/Me', jsonParser, function(req, res) {
+    session = req.session;
+    setCreditCardOptions(req, res)
+        .then(submitCreditCardRequest)
+        .catch(renderErrorPage)
+        .done();
 });
 
 function setUserOptions(req, res) {
@@ -102,6 +109,96 @@ function sendResponse(function_input) {
   res.setHeader('Content-Type', 'application/scim+json');
   res.setHeader('Accept', 'application/scim+json');
   res.send(data);
+}
+
+function setCreditCardOptions(req, res) {
+
+    var form_body = req.body;
+
+    var reqBody = {
+      emails: form_body.emails,
+      addresses: form_body.addresses,
+      meta: form_body.meta,
+      schemas: form_body.schemas,
+      'urn:ietf:params:scim:schemas:extension:ibm:2.0:User': {
+          "customAttributes": [
+              {
+                  "values": [
+                      form_body.cardno
+                  ],
+                  "name": "creditcardno"
+              }
+          ],
+          "lastLoginType": "user_password"
+      },
+      name: form_body.name,
+      groups: form_body.groups,
+      active: form_body.active,
+      id: form_body.id,
+      userName: form_body.userName,
+      phoneNumbers: form_body.phoneNumbers
+    };
+
+    console.log("credit card data"+form_body.name.formatted);
+
+    var cc_put_url = api_url.stringify({
+        protocol: _apis.user.protocol,
+        host: _apis.user.service_name,
+        api: _apis.user.base_path,
+        operation: "Me"
+    });
+
+    var options = {
+        method: 'PUT',
+        url: cc_put_url,
+        strictSSL: false,
+        headers: { 'Content-Type': 'application/scim+json', 'Accept': 'application/scim+json' },
+        body: reqBody,
+        JSON: true
+    };
+
+    // Add Headers like Host
+    if (_apis.user.headers) {
+        options.headers = _apis.user.headers;
+    }
+
+    return new Promise(function(fulfill) {
+        // Get OAuth Access Token, if needed
+        if (_apis.user.require.indexOf("oauth") != -1) {
+            // Add OAuth access token to the header
+            options.headers.Authorization = req.headers.authorization;
+            fulfill({
+                options: options,
+                res: res
+            });
+        } else fulfill({
+            options: options,
+            res: res
+        });
+    });
+
+}
+
+function submitCreditCardRequest(function_input) {
+    var options = function_input.options;
+    var creditcardno = function_input.creditcardno;
+    console.log("CC OPTIONS:\n" + JSON.stringify(options));
+    http.request(options)
+        .then(function(data) {
+            console.log("DATA: " + JSON.stringify(data));
+            // Render the page with the results of the API call
+            txnid = data.id;
+            res.setHeader('Content-Type', 'application/scim+json');
+            res.setHeader('Accept', 'application/scim+json');
+            res.send(data);
+        })
+        .fail(function(err) {
+            console.log("ERR: " + JSON.stringify(err));
+            // Render the error message in JSON
+            res.setHeader('Content-Type', 'application/scim+json');
+            res.setHeader('Accept', 'application/scim+json');
+            res.send(err);
+        });
 }
 
 function renderErrorPage(function_input) {

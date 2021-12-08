@@ -37,6 +37,16 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				url: restUrl,
 				data: parameters
 				}).then(successCallback, errorCallback);
+		}else if (requestType == 'PUT_AUTH'){
+			$http({
+				headers: {
+				//	"Content-Type": 'application/x-www-form-urlencoded'
+					"Authorization": 'Bearer '+ access_token,
+				},
+				method: 'PUT',
+				url: restUrl,
+				data: parameters
+				}).then(successCallback, errorCallback);
 		}
 		else {
 			var basicAuthToken = CONFIG["Auth-Server"].client_id + ":" + CONFIG["Auth-Server"].client_secret;
@@ -121,6 +131,11 @@ app.service('BlueAPIService',['$http', 'CONFIG', '$base64', function($http, CONF
 				var restUrl = 'payments/Me';
 				var requestType = 'GET_AUTH';
 				invokeService(restUrl, requestType, null, successCallback, errorCallback, access_token);
+			},
+			putCCInfo : function(access_token, parameters, successCallback, errorCallback) {
+				var restUrl = 'payments/Me';
+				var requestType = 'PUT_AUTH';
+				invokeService(restUrl, requestType, parameters, successCallback, errorCallback, access_token);
 			},
 		}
 }]);
